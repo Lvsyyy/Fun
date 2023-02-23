@@ -1,0 +1,9 @@
+local dialog = {
+"The ancient tome of magic has been stolen from our sacred temple. Wilt thou help us to retrieve it?",
+"The dark lord hath cursed our village, and only a hero of great power can lift the curse. Art thou that hero?",
+"Our kingdom is in dire need of a champion to defeat the dragon that plagues our lands. Wilt thou take up the challenge?",
+"The sacred crystal that keeps the evil at bay is in danger of falling into the wrong hands. Wilt thou help us to protect it?",
+"The legendary sword that can vanquish the darkness is hidden deep within the forbidden forest. Wilt thou brave its dangers to find it?"}
+
+local questsdialog = dialog[math.random(1, #dialog)]
+game:GetService("ReplicatedStorage"):WaitForChild("DefaultChatSystemChatEvents"):WaitForChild("SayMessageRequest"):FireServer(questsdialog, "All")
