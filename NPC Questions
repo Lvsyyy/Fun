@@ -1,0 +1,9 @@
+local dialog = {
+"Hast thou heard of the enchanted lake of healing that lies beyond the mountains?",
+"Dost thou know the legend of the ancient warrior who defeated the demon lord with a single blow?",
+"Art thou familiar with the prophecy that foretells of a hero who shall rise up and save our kingdom from darkness?",
+"Have thou ever encountered the legendary unicorn, with its horn of purest silver?",
+"Hath thou heard of the cursed tomb, where the souls of the undead still roam?"}
+
+local questionsdialog = dialog[math.random(1, #dialog)]
+game:GetService("ReplicatedStorage"):WaitForChild("DefaultChatSystemChatEvents"):WaitForChild("SayMessageRequest"):FireServer(questionsdialog, "All")
