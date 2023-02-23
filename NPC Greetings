@@ -1,0 +1,9 @@
+local dialog = {
+"Greetings, fair traveler! What brings thee to these lands?",
+"Good morrow to thee, good sir/madam! Art thou in search of adventure?",
+"Hail and well met, noble hero! What news dost thou bring from thy travels?",
+"Verily, thou art a brave one to venture forth into these perilous lands. What can I do for thee?",
+"Welcome to these lands, traveler! How may I be of assistance?"}
+
+local greetingsdialog = dialog[math.random(1, #dialog)]
+game:GetService("ReplicatedStorage"):WaitForChild("DefaultChatSystemChatEvents"):WaitForChild("SayMessageRequest"):FireServer(greetingsdialog, "All")
