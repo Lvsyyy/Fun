@@ -1,0 +1,9 @@
+local dialog = {
+"Farewell, brave adventurer! May thy journey be safe and prosperous.",
+"'Tis time for me to bid thee adieu, noble hero. May the gods watch over thee.",
+"Alas, I must take my leave, good sir/madam. May thy quest be successful.",
+"I shall take my leave, fair traveler. May thy path be free from danger.",
+"Until we meet again, noble champion. May thy sword stay sharp and true."}
+
+local goodbyesdialog = dialog[math.random(1, #dialog)]
+game:GetService("ReplicatedStorage"):WaitForChild("DefaultChatSystemChatEvents"):WaitForChild("SayMessageRequest"):FireServer(goodbyesdialog, "All")
