@@ -1,8 +1,8 @@
 local dialog = {
-"Verily, thou art a disgrace to thy kin and to thyself."
-"Hark! What a pitiful sight thou art. A true shame to all who look upon thee."
-"Alas! Such shameful behavior dost thou exhibit, tainting thy name and honor."
-"By the saints, what a shameful display of weakness and cowardice thou hast shown."
+"Verily, thou art a disgrace to thy kin and to thyself.",
+"Hark! What a pitiful sight thou art. A true shame to all who look upon thee.",
+"Alas! Such shameful behavior dost thou exhibit, tainting thy name and honor.",
+"By the saints, what a shameful display of weakness and cowardice thou hast shown.",
 "Truly, thou hast brought dishonor upon thyself and thy family with thy deeds."}
 
 local shamedialog = dialog[math.random(1, #dialog)]
