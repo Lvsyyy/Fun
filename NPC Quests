@@ -1,9 +1,35 @@
 local dialog = {
-"The ancient tome of magic has been stolen from our sacred temple. Wilt thou help us to retrieve it?",
-"The dark lord hath cursed our village, and only a hero of great power can lift the curse. Art thou that hero?",
-"Our kingdom is in dire need of a champion to defeat the dragon that plagues our lands. Wilt thou take up the challenge?",
-"The sacred crystal that keeps the evil at bay is in danger of falling into the wrong hands. Wilt thou help us to protect it?",
-"The legendary sword that can vanquish the darkness is hidden deep within the forbidden forest. Wilt thou brave its dangers to find it?"}
+"Hark, brave adventurer! The King's prized sword has been stolen by a band of thieves. Retrieve it and you shall be greatly rewarded!",
+"Greetings, traveler. The land has been plagued by a terrible curse that has turned the people into stone. Find the source and put an end to it!",
+"Salutations, adventurer. A great dragon has been terrorizing the kingdom and has taken up residence in a nearby cave. Slay the beast and claim its treasure!",
+"Hail, hero. The kingdom's princess has been kidnapped by a wicked sorcerer. Rescue her and you shall have her hand in marriage and the throne.",
+"Welcome, brave soul. A mystical artifact has been stolen from the temple of the gods. Retrieve it and the gods shall grant you their blessing.",
+"Well met, traveler. A dark necromancer has been raising an army of undead minions. Put an end to his wicked schemes and restore peace to the land.",
+"Greetings, adventurer. The lost city of gold is said to be hidden deep within the jungle. Find it and claim its riches for yourself!",
+"Hark, hero. The dwarven kingdom has been overrun by orcs. Help the dwarves reclaim their home and they shall reward you with their finest treasures.",
+"Salutations, brave one. The land is being threatened by a giant sea serpent. Slay the beast and earn the admiration of the coastal townsfolk.",
+"Welcome, traveler. A mad wizard has unleashed a horde of monsters upon the land. Destroy them and the wizard shall reward you with a powerful spellbook.",
+"Harken, brave adventurer! The ancient ruins of the forgotten kingdom await thee. Many dangers lurk within, but treasures beyond measure await the one who dares to venture forth.",
+"Greetings, valiant traveler. The kingdom is in peril as a fearsome dragon has taken up residence in the nearby mountains. Slay the beast and be rewarded with riches and honor.",
+"Ho there, adventurer! A dark curse has befallen our village, causing crops to wither and livestock to die. Seek out the source of this foul magic and put an end to it before it's too late.",
+"Greetings, noble warrior. A powerful relic, said to grant immense power to its wielder, lies hidden in the depths of a treacherous labyrinth. Retrieve it for us and you shall be richly rewarded.",
+"Hail, brave soul! A mighty sea monster has been terrorizing nearby ships, causing merchants to avoid our port. Slay the beast and restore our trade routes to prosperity.",
+"Good morrow, adventurer. Our castle has been besieged by an army of orcs, led by a fearsome warlord. Defeat their leader and send them fleeing, and the kingdom shall be forever grateful.",
+"Harken, brave knight. The princess has been kidnapped by a band of ruthless bandits. Rescue her and be hailed as a hero throughout the land.",
+"Ho there, gallant traveler. The forest is plagued by a terrible curse that causes trees to wither and die. Find the source of this evil and put an end to it, and the forest will thrive once more.",
+"Greetings, intrepid explorer. A lost city lies hidden in the heart of the jungle, filled with treasures beyond your wildest dreams. But beware, for many dangers and traps await those who seek it out.",
+"Hail, adventurer! The dwarves have been driven from their ancestral home by a horde of goblins. Help them reclaim their underground kingdom and they will reward you with their finest crafts and riches."}
 
-local questsdialog = dialog[math.random(1, #dialog)]
-game:GetService("ReplicatedStorage"):WaitForChild("DefaultChatSystemChatEvents"):WaitForChild("SayMessageRequest"):FireServer(questsdialog, "All")
+local lastDialogIndex = 0
+local questsdialog
+
+function getRandomDialog()
+    local index = math.random(1, #dialog)
+    while index == lastDialogIndex do
+        index = math.random(1, #dialog)
+    end
+    lastDialogIndex = index
+    return dialog[index]
+end
+questsdialog = getRandomDialog()
+game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(questsdialog, "All")
