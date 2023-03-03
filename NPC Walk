@@ -1,5 +1,3 @@
-local SEARCH_RADIUS = value6
-local WALK_COOLDOWN = value7
 local player = game.Players.LocalPlayer
 local character = player.Character or player.CharacterAdded:Wait()
 local humanoid = character:WaitForChild("Humanoid")
@@ -21,14 +19,14 @@ local function getNearestPlayer()
 end
 
 local function walkRandomlyAroundPlayer(targetPlayer)
-    while targetPlayer and targetPlayer.Character and targetPlayer.Character:FindFirstChild("HumanoidRootPart") do
+    while _G.Walk and targetPlayer and targetPlayer.Character and targetPlayer.Character:FindFirstChild("HumanoidRootPart") do
         local targetPosition = targetPlayer.Character.HumanoidRootPart.Position + Vector3.new(math.random(-SEARCH_RADIUS, SEARCH_RADIUS), 0, math.random(-SEARCH_RADIUS, SEARCH_RADIUS))
         humanoid:MoveTo(targetPosition)
         wait(WALK_COOLDOWN)
     end
 end
 
-while _G.Walk == true do
+if _G.Walk == true then
     wait()
     targetPlayer = getNearestPlayer()
     walkRandomlyAroundPlayer(targetPlayer)
