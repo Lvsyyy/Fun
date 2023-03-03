@@ -1,9 +1,35 @@
 local dialog = {
-"Hast thou heard of the enchanted lake of healing that lies beyond the mountains?",
-"Dost thou know the legend of the ancient warrior who defeated the demon lord with a single blow?",
-"Art thou familiar with the prophecy that foretells of a hero who shall rise up and save our kingdom from darkness?",
-"Have thou ever encountered the legendary unicorn, with its horn of purest silver?",
-"Hath thou heard of the cursed tomb, where the souls of the undead still roam?"}
+"Pray, what news have you heard of the orcish raid in the neighboring village?",
+"Hast thou seen the great white stag of the western woods, rumored to grant a wish to those who catch it?",
+"Might I ask, have you crossed paths with the wise old wizard who dwells atop the highest peak of the mountains?",
+"Good morrow! Art thou perchance in need of a guide through the treacherous swamps of the east?",
+"Prithee, what is thy opinion on the recent proclamation from the king regarding the use of magic in the realm?",
+"Have thee ever come across the ancient tome of the forgotten gods, said to contain great knowledge and power?",
+"Canst thou share any knowledge on the whereabouts of the bandit king and his band of ruthless thieves?",
+"Knowest thou aught of the legend of the cursed treasure buried deep within the sunken ruins of the old castle?",
+"Hast thou encountered the great dragon that has taken residence in the abandoned volcano, terrorizing the nearby villages?",
+"Prithee, have you heard of the mysterious traveler who has been seen wandering the land with an enchanted sword of great power?",
+"Hast thou seen any strange creatures lurking in these woods?",
+"Hast thou encountered any treacherous bandits on thy travels?",
+"Dost thou know the way to the nearest inn, good sir/madam?",
+"Hast thou heard any rumors of a cursed object in these lands?",
+"Prithee, dost thou know the whereabouts of a skilled blacksmith?",
+"Hast thou seen any signs of dark magic in these parts?",
+"Dost thou know of any ancient ruins that may hold great treasures?",
+"Hast thou seen any lost travelers who may be in need of assistance?",
+"Prithee, hast thou heard of a great dragon that resides in these lands?",
+"Dost thou know of any wise sages who may be able to aid me in my quest?"}
 
-local questionsdialog = dialog[math.random(1, #dialog)]
-game:GetService("ReplicatedStorage"):WaitForChild("DefaultChatSystemChatEvents"):WaitForChild("SayMessageRequest"):FireServer(questionsdialog, "All")
+local lastDialogIndex = 0
+local questionsdialog
+
+function getRandomDialog()
+    local index = math.random(1, #dialog)
+    while index == lastDialogIndex do
+        index = math.random(1, #dialog)
+    end
+    lastDialogIndex = index
+    return dialog[index]
+end
+questionsdialog = getRandomDialog()
+game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(questionsdialog, "All")
