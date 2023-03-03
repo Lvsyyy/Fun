@@ -30,11 +30,16 @@ local dialog = {
 "Salutations, noble warrior! Thou art most welcome in these lands.",
 "Hail, brave soul! May the fates smile upon thee and guide thee to greatness."}
 
-local previousDialog = ""
-local greetingsDialog = ""
-while greetingsDialog == previousDialog do
-    greetingsDialog = dialog[math.random(1, #dialog)]
-end
-previousDialog = greetingsDialog
+local lastDialogIndex = 0
+local greetingsdialog
 
-game:GetService("ReplicatedStorage"):WaitForChild("DefaultChatSystemChatEvents"):WaitForChild("SayMessageRequest"):FireServer(previousDialog, "All")
+function getRandomDialog()
+    local index = math.random(1, #dialog)
+    while index == lastDialogIndex do
+        index = math.random(1, #dialog)
+    end
+    lastDialogIndex = index
+    return dialog[index]
+end
+greetingsdialog = getRandomDialog()
+game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(greetingsdialog, "All")
