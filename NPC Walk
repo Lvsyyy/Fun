@@ -22,7 +22,7 @@ local function getNearestPlayer(players, position)
 end
 
 local function walkRandomlyAroundPlayer(targetPlayer)
-    while targetPlayer.Character do
+    while targetPlayer.Character and _G.Walk = true do
         local targetPosition = targetPlayer.Character.HumanoidRootPart.Position
         local searchPosition = targetPosition + Vector3.new(math.random(-SEARCH_RADIUS, SEARCH_RADIUS), 0, math.random(-SEARCH_RADIUS, SEARCH_RADIUS))
 
