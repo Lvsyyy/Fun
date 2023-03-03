@@ -1,9 +1,40 @@
 local dialog = {
-"Greetings, fair traveler! What brings thee to these lands?",
-"Good morrow to thee, good sir/madam! Art thou in search of adventure?",
-"Hail and well met, noble hero! What news dost thou bring from thy travels?",
-"Verily, thou art a brave one to venture forth into these perilous lands. What can I do for thee?",
-"Welcome to these lands, traveler! How may I be of assistance?"}
+"Greetings, traveller. Art thou in need of aid?",
+"Well met, good sir/madam. What brings thee to this place?",
+"Hail, stranger. Might I be of service to thee?",
+"Salutations, adventurer. Pray tell, what brings thee here today?",
+"Good morrow, noble one. How may I assist thee?",
+"Welcome, friend. Might I interest thee in my wares?",
+"Blessings upon thee, traveller. What can I do for thee?",
+"Ahoy there, fellow wanderer. Might I offer thee some guidance?",
+"Hello, kind sir/madam. Might I have the pleasure of thy company?",
+"Greetings and felicitations, traveller. What doth thou require of me?",
+"Good morrow, traveller. Mayhaps ye seek my guidance?",
+"Greetings and well met, stranger. What business have ye in these parts?",
+"Hail and welcome, fair adventurer. What brings thee to this place?",
+"Greetings, noble hero. I pray thy journey has been a safe one thus far.",
+"Hail to thee, fellow traveller. Mayhap thou hast need of my services?",
+"Well met, young squire. What news from thy travels?",
+"Greetings, my friend. What brings thee to my humble abode?",
+"Hail and welcome, fair lady. How may I be of service to thee?",
+"Greetings, good sir. Pray, tell me of thy quest.",
+"Well met, stout-hearted warrior. What dangers hast thou faced on thy journey?",
+"Hail and well met, traveler! May your journey be blessed by the gods themselves.",
+"Greetings, good sir/madam! I bid thee welcome to this humble abode.",
+"Hail, brave adventurer! What brings thee to these parts?",
+"Well met, friend! Pray tell, what news from the world beyond?",
+"Greetings, traveler! May the winds be ever at thy back and the sun ever on thy face.",
+"Welcome, stranger! 'Tis an honor to make thy acquaintance.",
+"Hail and welcome, weary traveler! Thou hast come a long way, I presume.",
+"Greetings, honored guest! I trust thy journey was not too arduous.",
+"Salutations, noble warrior! Thou art most welcome in these lands.",
+"Hail, brave soul! May the fates smile upon thee and guide thee to greatness."}
 
-local greetingsdialog = dialog[math.random(1, #dialog)]
+local previousDialog = ""
+local greetingsDialog = ""
+while greetingsDialog == previousDialog do
+    greetingsDialog = dialog[math.random(1, #dialog)]
+end
+previousDialog = greetingsDialog
+
 game:GetService("ReplicatedStorage"):WaitForChild("DefaultChatSystemChatEvents"):WaitForChild("SayMessageRequest"):FireServer(greetingsdialog, "All")
