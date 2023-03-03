@@ -37,4 +37,4 @@ while greetingsDialog == previousDialog do
 end
 previousDialog = greetingsDialog
 
-game:GetService("ReplicatedStorage"):WaitForChild("DefaultChatSystemChatEvents"):WaitForChild("SayMessageRequest"):FireServer(greetingsdialog, "All")
+game:GetService("ReplicatedStorage"):WaitForChild("DefaultChatSystemChatEvents"):WaitForChild("SayMessageRequest"):FireServer(previousDialog, "All")
