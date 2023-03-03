@@ -1,0 +1,35 @@
+local dialog = {
+"I doth express gratitude from the depths of mine heart.",
+"I cannot express how grateful I am for thy aid.",
+"I offer thee my sincere thanks, good sir/madam.",
+"Thy kindness shall not be forgotten. Thank you.",
+"Verily, thou hast saved me. I offer my sincerest thanks.",
+"Thou hast my heartfelt thanks. 'Tis a debt I can never repay.",
+"I humbly thank thee for thy assistance.",
+"May the gods bless thee for thy kindness. Thank thee.",
+"Thy aid hath saved the day. I offer thee my thanks.",
+"I shall not forget thy good deed. Thank thee kindly.",
+"Many thanks, good sir. Thy aid hath not gone unnoticed.",
+"I owe thee a great debt of gratitude, friend. Thank thee kindly.",
+"Thou hast done me a great kindness. I am forever in thy debt.",
+"Thou hast saved me from a most dire situation. My heartfelt thanks.",
+"My gratitude to thee, brave adventurer. Thy help hath been invaluable.",
+"I cannot thank thee enough for thy assistance. Thou art a true hero.",
+"The generosity of thy deeds shall be remembered. Thank thee.",
+"Thy selflessness and bravery shall not go unrewarded. I thank thee deeply.",
+"May the gods bless thee for thy kindness. Thank thee from the bottom of my heart.",
+"Thy aid hath saved us all. We shall forever be in thy debt. Thank thee."}
+
+local lastDialogIndex = 0
+local thanksdialog
+
+function getRandomDialog()
+    local index = math.random(1, #dialog)
+    while index == lastDialogIndex do
+        index = math.random(1, #dialog)
+    end
+    lastDialogIndex = index
+    return dialog[index]
+end
+thanksdialog = getRandomDialog()
+game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(thanksdialog, "All")
