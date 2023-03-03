@@ -1,9 +1,35 @@
 local dialog = {
-"Farewell, brave adventurer! May thy journey be safe and prosperous.",
-"'Tis time for me to bid thee adieu, noble hero. May the gods watch over thee.",
-"Alas, I must take my leave, good sir/madam. May thy quest be successful.",
-"I shall take my leave, fair traveler. May thy path be free from danger.",
-"Until we meet again, noble champion. May thy sword stay sharp and true."}
+"May the blessings of the gods be upon thee as thou depart from our humble abode.",
+"Farewell, my friend. May the winds of fortune be ever in thy favor.",
+"As the sun sets on this day, so too must we bid thee farewell. Safe travels, friend.",
+"May the path ahead be filled with prosperity and joy, and may we meet again under the watchful gaze of the heavens.",
+"Tarry not too long on thy journey, my friend. The road ahead may be treacherous, but with thy skill and courage, thou shalt overcome.",
+"The night grows long and the stars grow bright. It is time for us to part ways, but fear not, for the light of our friendship shall never fade.",
+"We bid thee adieu, but know that thou shalt always be welcome in our halls. May thy travels bring thee great fortune.",
+"The shadows lengthen and the day grows old. Our time together may be done, but the memory of our meeting shall linger on.",
+"Fair thee well, noble traveler. May the road rise up to meet thee and the wind be always at thy back.",
+"Though our time together was brief, the bond we share shall endure. May the road ahead be kind to thee, and may we meet again in happier times.",
+"Fare thee well, dear friend. Mayhap our paths shall cross once more.",
+"May the wind ever be at thy back, and the sun upon thy face. 'Twas a pleasure speaking with thee.",
+"I bid thee adieu, kind sir/madam. May the blessings of the gods be upon thee.",
+"Take care on thy journey, and mayest thou find what thou seeketh. Farewell for now.",
+"Mayest thou find fortune and joy on thy travels. Until we meet again, my friend.",
+"I thank thee for thy company and conversation. Farewell, and may the stars guide thy way.",
+"As thou departest, know that thou art wished well. Fare thee well, and safe travels.",
+"May the road rise up to meet thee, and may the wind be always at thy back. Farewell, friend.",
+"Thy presence was a delight, and thy departure shall be felt. Until we cross paths again, farewell.",
+"Mayest thou find peace and contentment on thy journey, and may we meet again in better times. Farewell, dear friend."}
 
-local goodbyesdialog = dialog[math.random(1, #dialog)]
-game:GetService("ReplicatedStorage"):WaitForChild("DefaultChatSystemChatEvents"):WaitForChild("SayMessageRequest"):FireServer(goodbyesdialog, "All")
+local lastDialogIndex = 0
+local goodbyesdialog
+
+function getRandomDialog()
+    local index = math.random(1, #dialog)
+    while index == lastDialogIndex do
+        index = math.random(1, #dialog)
+    end
+    lastDialogIndex = index
+    return dialog[index]
+end
+goodbyesdialog = getRandomDialog()
+game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(goodbyesdialog, "All")
