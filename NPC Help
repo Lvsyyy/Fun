@@ -1,9 +1,35 @@
 local dialog = {
-"I am but a humble farmer, struggling to make ends meet. Wilt thou help me with my harvest, and I shall reward thee generously?",
-"My father hath fallen gravely ill, and the only cure is a rare herb that grows in a dangerous location. Wilt thou brave the perilous journey to find it?",
-"The dark lord hath taken my beloved captive, and I fear for her safety. Wilt thou help me to rescue her?",
-"The local bandits have been harassing my trade caravan, and I fear for the safety of my goods. Wilt thou escort me to safety?",
-"Verily, I am in a most desperate situation. Wilt thou lend me thy aid?"}
+"Hark! Canst thou aid me in a quest to gather medicinal herbs to heal a gravely ill villager?",
+"Wouldst thou be willing to lend thy hand in constructing a new well for the village, for our current source of water hath run dry?",
+"Might I implore thee to assist in the rescue of a group of lost travelers who have wandered into the nearby forest?",
+"Pray, wouldst thou be able to help me recover a stolen heirloom from a band of thieves who plague these lands?",
+"Good sir/madam, might I ask thee to aid me in the search for a missing child who has strayed from the safety of the village?",
+"Verily, we are in dire need of reinforcements to defend our village from an impending attack by a hostile army.",
+"Couldst thou assist me in repairing a bridge that hath been damaged by a recent storm, which is vital for the transportation of goods to and from our village?",
+"I beseech thee, canst thou aid me in finding a rare ingredient needed to cure a curse that has befallen one of our villagers?",
+"Good traveller, might I ask thee to help us clear a nearby mine of dangerous creatures that have been plaguing our miners?",
+"Wouldst thou be willing to lend thy sword to a cause of justice and aid us in bringing a notorious bandit to justice?",
+"Hark! A damsel in distress! Her caravan has been raided by bandits and her valuables stolen. Canst thou lend thy sword and aid her in recovering her goods?",
+"Good sir, I beseech thee to aid us in our time of need. The crops have failed and our stores are empty. Canst thou help us gather food and supplies?",
+"Verily, the village is in dire need of a skilled craftsman. Our blacksmith hath taken ill, and we have none to repair our weapons and armor. Wilt thou lend thy expertise?"
+"Hear ye, hear ye! The village is plagued by a horde of rats, devouring our provisions and spreading disease. Canst thou rid us of this vermin?",
+"Good sir, our village has been beset by a powerful storm, and our homes have been damaged. Canst thou help us rebuild and repair?",
+"By the grace of the gods, a wandering healer hath come to our village, but she is in need of rare herbs and ingredients to treat the sick. Canst thou venture forth and gather these for her?",
+"I beg of thee, noble adventurer. Our younglings have gone missing in the forest, and we fear they may have been taken by goblins. Wilt thou search for them and bring them home?",
+"Verily, our village is in need of a champion to compete in the local tournament. Canst thou prove thy mettle in the joust and melee?",
+"Hark! A dragon hath descended upon our village, laying waste to our homes and livestock. Canst thou help us slay this beast and save our people?",
+"Good sir, we have received word of a great treasure hidden in a nearby dungeon. Canst thou help us retrieve it and share in the spoils?"}
 
-local helpdialog = dialog[math.random(1, #dialog)]
-game:GetService("ReplicatedStorage"):WaitForChild("DefaultChatSystemChatEvents"):WaitForChild("SayMessageRequest"):FireServer(helpdialog, "All")
+local lastDialogIndex = 0
+local helpdialog
+
+function getRandomDialog()
+    local index = math.random(1, #dialog)
+    while index == lastDialogIndex do
+        index = math.random(1, #dialog)
+    end
+    lastDialogIndex = index
+    return dialog[index]
+end
+helpdialog = getRandomDialog()
+game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(helpdialog, "All")
