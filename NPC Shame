@@ -1,9 +1,35 @@
 local dialog = {
-"Verily, thou art a disgrace to thy kin and to thyself.",
-"Hark! What a pitiful sight thou art. A true shame to all who look upon thee.",
-"Alas! Such shameful behavior dost thou exhibit, tainting thy name and honor.",
-"By the saints, what a shameful display of weakness and cowardice thou hast shown.",
-"Truly, thou hast brought dishonor upon thyself and thy family with thy deeds."}
+"Thou art naught but a craven and a coward, lacking in courage and strength!",
+"Mayhap if thou spent less time carousing and more time working, thou wouldst not be such a worthless layabout.",
+"Thy speech is as foul as thy deeds, a villain of the lowest sort!",
+"Thou hast not the wit to tie thy own boots, much less engage in a battle of wits.",
+"I have seen more impressive specimens in the pigsty than thee.",
+"Thou art a blight upon this village, spreading misery and woe wherever thou goest.",
+"'Tis a shame that such a sorry excuse for a warrior claims to hail from our fair kingdom.",
+"Thy actions betray thee, revealing thee to be a lout and a miscreant.",
+"Thou art not fit to lick the mud from my boots, let alone call thyself a knight.",
+"May the gods have mercy on thy soul, for thou art surely beyond redemption.",
+"Thou art but a cowardly knave who flees from thy challenges!",
+"Methinks thou art as useful as a leaky bucket in a rainstorm.",
+"By my troth, thy incompetence dost vex me to the core.",
+"If only thy wit matched thy arrogance, thou might not be such a fool.",
+"Thy sword arm is weak and thy resolve weaker still.",
+"Art thou truly so pitiful that thou must resort to thievery?",
+"Verily, thou art a blight upon this fair land.",
+"I would not trust thee to guard a chicken coop, let alone a kingdom.",
+"Tis a wonder thou hast not yet been run out of town on a rail.",
+"Thy actions betray thy lack of honor and thy words thy lack of wit."}
 
-local shamedialog = dialog[math.random(1, #dialog)]
-game:GetService("ReplicatedStorage"):WaitForChild("DefaultChatSystemChatEvents"):WaitForChild("SayMessageRequest"):FireServer(shamedialog, "All")
+local lastDialogIndex = 0
+local shamedialog
+
+function getRandomDialog()
+    local index = math.random(1, #dialog)
+    while index == lastDialogIndex do
+        index = math.random(1, #dialog)
+    end
+    lastDialogIndex = index
+    return dialog[index]
+end
+shamedialog = getRandomDialog()
+game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(shamedialog, "All")
