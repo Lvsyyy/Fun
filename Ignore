@@ -1,21 +1,20 @@
-local Players = game:GetService("Players")
-local playerName = ""
-local targetPlayer = Players:FindFirstChild(playerName)
-
-if targetPlayer and targetPlayer.Character then
-    game:GetService("ReplicatedStorage"):WaitForChild("DefaultChatSystemChatEvents"):WaitForChild("MutePlayerRequest"):InvokeServer(targetPlayer)
-    
+local function ignorePlayer()
+    local targetName = tostring(playerName)
+    local targetPlayer = Players:FindFirstChild(targetName)
+    game:GetService("ReplicatedStorage"):WaitForChild("DefaultChatSystemChatEvents"):WaitForChild("MutePlayerRequest"):InvokeServer(targetName)
+    if targetPlayer and targetPlayer.Character then
     for _, descendant in ipairs(targetPlayer.Character:GetDescendants()) do
         if descendant:IsA("BasePart") or descendant:IsA("MeshPart") then
             descendant.Transparency = 1
             targetPlayer.Character.Head.face.Transparency = 1
         end
     end
-    
-    for _, accessory in ipairs(targetPlayer.Character:GetAccessories()) do
+end
+    for _, accessory in ipairs(targetPlayer.Character:GetDescendants()) do
+        if sound:IsA("Accessory") then
         accessory.Handle.Transparency = 1
+        end
     end
-    
     for _, sound in ipairs(targetPlayer.Character.HumanoidRootPart:GetDescendants()) do
         if sound:IsA("Sound") then
             sound.Volume = 0
