@@ -1,4 +1,4 @@
-local function ignorePlayer()
+function ignorePlayer()
     local targetName = tostring(playerName)
     local targetPlayer = Players:FindFirstChild(targetName)
     game:GetService("ReplicatedStorage"):WaitForChild("DefaultChatSystemChatEvents"):WaitForChild("MutePlayerRequest"):InvokeServer(targetName)
