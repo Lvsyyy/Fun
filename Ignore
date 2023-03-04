@@ -1,16 +1,18 @@
-function ignorePlayer()
-    local targetName = tostring(playerName)
-    local targetPlayer = Players:FindFirstChild(targetName)
+local targetName = tostring(playerName)
+local targetPlayer = Players:FindFirstChild(targetName)
     game:GetService("ReplicatedStorage"):WaitForChild("DefaultChatSystemChatEvents"):WaitForChild("MutePlayerRequest"):InvokeServer(targetName)
     if targetPlayer and targetPlayer.Character then
+    print("beginn good")
     for _, descendant in ipairs(targetPlayer.Character:GetDescendants()) do
         if descendant:IsA("BasePart") or descendant:IsA("MeshPart") then
+            print("body good")
             descendant.Transparency = 1
             targetPlayer.Character.Head.face.Transparency = 1
         end
     end
 end
     for _, accessory in ipairs(targetPlayer.Character:GetDescendants()) do
+        print("hats good")
         if sound:IsA("Accessory") then
         accessory.Handle.Transparency = 1
         end
@@ -20,4 +22,3 @@ end
             sound.Volume = 0
         end
     end
-end
