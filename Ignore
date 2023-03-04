@@ -1,4 +1,5 @@
 local Players = game:GetService("Players")
+local playerName = ""
 local targetName = tostring(playerName)
 local targetPlayer = Players:FindFirstChild(targetName)
     game:GetService("ReplicatedStorage"):WaitForChild("DefaultChatSystemChatEvents"):WaitForChild("MutePlayerRequest"):InvokeServer(targetPlayer)
