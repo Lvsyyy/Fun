@@ -1,9 +1,9 @@
-local word = ""
-local guessedWord = ""
-local numGuesses = 0
-local maxGuesses = 6
+word = ""
+guessedWord = ""
+numGuesses = 0
+maxGuesses = 6
 
-local function hasChar(word, char)
+function hasChar(word, char)
     for i = 1, #word do
         if word:sub(i, i) == char then
             return true
@@ -12,15 +12,15 @@ local function hasChar(word, char)
     return false
 end
 
-local function newWord()
-    local wordList = {"apple", "bread", "chair", "drink", "early", "fruit", "glass", "house", "issue", "juice", "knife", "lemon", "money", "night", "ocean", "paper", "quick", "route", "sauce", "tiger", "amber", "black", "cloud", "dance", "earth", "flame", "grape", "heart", "image", "jolly", "kiosk", "lunar", "mango", "noise", "olive", "piano", "queen", "rapid", "sugar", "tulip", "uncle", "vital", "wedge", "yacht", "zebra", "brush", "craft", "dream", "elite", "fable", "glaze", "happy", "igloo", "jolly", "knack", "labor", "mirth", "noble", "opera", "proud", "quilt", "razor", "shock", "tulip", "uncut", "virus", "wreck", "yield", "zesty", "brisk", "chase", "dairy", "eager", "fancy", "gloom", "honey", "ideal", "joker", "knead", "latch", "magic", "naval", "onion", "peace", "quest", "roast", "silly", "taste", "upset", "vocal", "worry", "yummy", "zombie"}
+function newWord()
+    wordList = {"apple", "bread", "chair", "drink", "early", "fruit", "glass", "house", "issue", "juice", "knife", "lemon", "money", "night", "ocean", "paper", "quick", "route", "sauce", "tiger", "amber", "black", "cloud", "dance", "earth", "flame", "grape", "heart", "image", "jolly", "kiosk", "lunar", "mango", "noise", "olive", "piano", "queen", "rapid", "sugar", "tulip", "uncle", "vital", "wedge", "yacht", "zebra", "brush", "craft", "dream", "elite", "fable", "glaze", "happy", "igloo", "jolly", "knack", "labor", "mirth", "noble", "opera", "proud", "quilt", "razor", "shock", "tulip", "uncut", "virus", "wreck", "yield", "zesty", "brisk", "chase", "dairy", "eager", "fancy", "gloom", "honey", "ideal", "joker", "knead", "latch", "magic", "naval", "onion", "peace", "quest", "roast", "silly", "taste", "upset", "vocal", "worry", "yummy", "zombie"}
     word = wordList[math.random(1, #wordList)]
     guessedWord = string.rep("_", #word)
     numGuesses = 0
     Label:UpdateLabel("New word generated! Guess the 5-letter word")
 end
 
-local function evaluateGuess(guess)
+function evaluateGuess(guess)
     if #guess ~= #word then
         Label:UpdateLabel("Please enter a 5-letter word")
         return
@@ -34,10 +34,10 @@ local function evaluateGuess(guess)
         newWord()
         return
     end
-    local newGuessedWord = ""
-    local feedback = ""
+    newGuessedWord = ""
+    feedback = ""
     for i = 1, #word do
-        local char = guessedWord:sub(i, i)
+        char = guessedWord:sub(i, i)
         if guess:sub(i, i) == word:sub(i, i) then
             char = word:sub(i, i)
             feedback = feedback .. "🟩 "
