@@ -1,0 +1,67 @@
+local word = ""
+local guessedWord = ""
+local numGuesses = 0
+local maxGuesses = 6
+
+local function hasChar(word, char)
+    for i = 1, #word do
+        if word:sub(i, i) == char then
+            return true
+        end
+    end
+    return false
+end
+
+local function newWord()
+    local wordList = {"apple", "bread", "chair", "drink", "early", "fruit", "glass", "house", "issue", "juice", "knife", "lemon", "money", "night", "ocean", "paper", "quick", "route", "sauce", "tiger", "amber", "black", "cloud", "dance", "earth", "flame", "grape", "heart", "image", "jolly", "kiosk", "lunar", "mango", "noise", "olive", "piano", "queen", "rapid", "sugar", "tulip", "uncle", "vital", "wedge", "yacht", "zebra", "brush", "craft", "dream", "elite", "fable", "glaze", "happy", "igloo", "jolly", "knack", "labor", "mirth", "noble", "opera", "proud", "quilt", "razor", "shock", "tulip", "uncut", "virus", "wreck", "yield", "zesty", "brisk", "chase", "dairy", "eager", "fancy", "gloom", "honey", "ideal", "joker", "knead", "latch", "magic", "naval", "onion", "peace", "quest", "roast", "silly", "taste", "upset", "vocal", "worry", "yummy", "zombie"}
+    word = wordList[math.random(1, #wordList)]
+    guessedWord = string.rep("_", #word)
+    numGuesses = 0
+    Label:UpdateLabel("New word generated! Guess the 5-letter word")
+end
+
+local function evaluateGuess(guess)
+    if #guess ~= #word then
+        Label:UpdateLabel("Please enter a 5-letter word")
+        return
+    end
+    if guess == word then
+        Label:UpdateLabel("Congratulations! You guessed the word")
+        Label1:UpdateLabel("Evaluation: 🟩 🟩 🟩 🟩 🟩 ")
+        wait(2)
+        Label1:UpdateLabel("Evaluaton:")
+        numGuesses = 0
+        newWord()
+        return
+    end
+    local newGuessedWord = ""
+    local feedback = ""
+    for i = 1, #word do
+        local char = guessedWord:sub(i, i)
+        if guess:sub(i, i) == word:sub(i, i) then
+            char = word:sub(i, i)
+            feedback = feedback .. "🟩 "
+        elseif hasChar(word, guess:sub(i, i)) then
+            feedback = feedback .. "🟧 "
+        else
+            feedback = feedback .. "🟥 "
+        end
+        newGuessedWord = newGuessedWord .. char
+    end
+    if newGuessedWord == guessedWord then
+        numGuesses = numGuesses + 1
+        Label1:UpdateLabel("Evaluation: " .. feedback .. " " .. (maxGuesses - numGuesses) .. " guesses remaining")
+        if numGuesses == maxGuesses then
+            Label:UpdateLabel("Sorry, you have run out of guesses. The word was " .. word)
+            wait(2)
+            Label1:UpdateLabel("Evaluaton:")
+            numGuesses = 0
+            newWord()
+            return
+        end
+    else
+        numGuesses = numGuesses + 1
+        guessedWord = newGuessedWord
+        Label1:UpdateLabel("Evaluation: " .. feedback .. " " .. (maxGuesses - numGuesses) .. " guesses remaining")
+    end
+end
