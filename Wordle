@@ -65,3 +65,9 @@ function evaluateGuess(guess)
         Label1:UpdateLabel("Evaluation: " .. feedback .. " " .. (maxGuesses - numGuesses) .. " guesses remaining")
     end
 end
+
+Button = Page9:CreateButton("Play Wordle", "Click to start playing Wordle", newWord)
+TextBox = Page9:CreateBox("Enter a 5-letter word:", 10044538000, evaluateGuess)
+Label = Page9:CreateLabel("")
+Label:UpdateLabel("Click 'Play Wordle' to start playing")
+Label1 = Page9:CreateLabel("Evaluation:")
