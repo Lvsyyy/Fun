@@ -45,6 +45,10 @@ for i = 1, 6 do
             end)
         end
     end
-    Humanoid:FindFirstChildOfClass("NumberValue"):Destroy();
+    for _, numValue in next, Humanoid:GetDescendants() do
+        if numValue:IsA("NumberValue") then
+            numValue:Destroy()
+        end
+    end
     Character.DescendantAdded:Wait(); task.wait()
 end
