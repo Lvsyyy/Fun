@@ -1,0 +1,50 @@
+local Scales = {
+    BodyTypeScale = true;
+    BodyWidthScale = true;
+    BodyHeightScale = true;
+    BodyDepthScale = true;
+    HeadScale = true;
+}
+
+local Players = game:GetService("Players")
+local Player = Players.LocalPlayer
+local Character = Player.Character
+local Humanoid = Character:FindFirstChildWhichIsA("Humanoid")
+
+if Humanoid.RigType == Enum.HumanoidRigType.R6 then
+    return
+end
+
+for i,v in next, Humanoid:GetPlayingAnimationTracks() do
+    v:Stop()
+end
+Character.Animate.Disabled = true
+
+Character.LeftUpperLeg.LeftKneeRigAttachment:Destroy()
+
+for _, unknown in next, Scales do
+    if unknown then
+        for _, _OriginSize in next, Character:GetDescendants() do
+            if _OriginSize.Name == "OriginalSize" and _OriginSize:IsA("ValueBase") then
+                _OriginSize:Destroy()
+            end
+        end
+        if Humanoid:FindFirstChild(tostring(_)) then
+            Humanoid:FindFirstChild(tostring(_)):Destroy()
+        end
+        Character.DescendantAdded:Wait(); task.wait()
+    end
+end
+
+for i = 1, 6 do
+    for _, v in next, Character:GetDescendants() do
+        if v:FindFirstChild("OriginalSize") then
+            v.OriginalSize:Destroy()
+            pcall(function()
+                v.LeftKneeRigAttachment:Destroy()
+            end)
+        end
+    end
+    Humanoid:FindFirstChildOfClass("NumberValue"):Destroy();
+    Character.DescendantAdded:Wait(); task.wait()
+end
