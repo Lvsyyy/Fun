@@ -22,8 +22,9 @@ savedCam = workspace.CurrentCamera.CFrame
 if game.PlaceId == 6708206173 then
     game:GetService("ReplicatedStorage"):WaitForChild("RequestRespawn"):FireServer()
 end
-player.CharacterAdded:Connect(function(character)
-    game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame = playerPos
-    player.Character.HumanoidRootPart.CFrame = savedPos
-    workspace.CurrentCamera.CFrame = savedCam
-end)
+while not Character do
+    wait()
+end
+game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame = playerPos
+player.Character.HumanoidRootPart.CFrame = savedPos
+workspace.CurrentCamera.CFrame = savedCam
