@@ -3,7 +3,7 @@ local savedCam
 local player = game:GetService("Players").LocalPlayer
 local playerChar = player.Character
 local playerHum = playerChar.Humanoid
-local target = game:GetService("Players")[targetName]
+local target = game:GetService("Players")["CasualWolf_666"]
 local tool = player.Backpack:FindFirstChildOfClass("Tool")
 local playerPos = playerChar.HumanoidRootPart.CFrame
 
@@ -22,7 +22,8 @@ savedCam = workspace.CurrentCamera.CFrame
 if game.PlaceId == 6708206173 then
     game:GetService("ReplicatedStorage"):WaitForChild("RequestRespawn"):FireServer()
 end
-wait(0.6)
-game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame = playerPos
-player.Character.HumanoidRootPart.CFrame = savedPos
-workspace.CurrentCamera.CFrame = savedCam
+player.CharacterAdded:Connect(function(character)
+    game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame = playerPos
+    player.Character.HumanoidRootPart.CFrame = savedPos
+    workspace.CurrentCamera.CFrame = savedCam
+end)
