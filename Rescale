@@ -20,7 +20,12 @@ for i,v in next, Humanoid:GetPlayingAnimationTracks() do
 end
 Character.Animate.Disabled = true
 
-Character.LeftUpperLeg.LeftKneeRigAttachment:Destroy()
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+
+repeat wait() until Character and Character:FindFirstChild("LeftUpperLeg") and Character.LeftUpperLeg:FindFirstChild("LeftKneeRigAttachment")
+
+LocalPlayer.Character.LeftUpperLeg.LeftKneeRigAttachment:Destroy()
 
 for _, unknown in next, Scales do
     if unknown then
