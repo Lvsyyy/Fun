@@ -17,6 +17,9 @@ playerPos = playerChar and playerChar.HumanoidRootPart.CFrame
 while not (player and playerChar and playerHum and tool and target) do
     wait()
 end
+while not game:GetService("Workspace")[targetName] do
+    wait()
+end
 while game:GetService("Workspace")[targetName].Humanoid.Health == 0 do
     wait()
 end
