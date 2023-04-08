@@ -1,4 +1,6 @@
 if game:GetService("Players")[targetName]:IsA("Player") then
+    savedPos = ""
+    savedCam = ""
     local player = game:GetService("Players").LocalPlayer
     local playerChar = player.Character
     local playerHum = playerChar.Humanoid
