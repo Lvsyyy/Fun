@@ -25,10 +25,10 @@ playerChar.Animate.Disabled = true
 playerHum.Parent = nil
 playerHum.Parent = player.Character
 tool.Parent = player.Character
+savedPos = playerChar.HumanoidRootPart.CFrame
+savedCam = workspace.CurrentCamera.CFrame
 firetouchinterest(target.Character.HumanoidRootPart, tool.Handle, 0);
 playerChar.Humanoid.Health = 0
-savedPos = player.Character.HumanoidRootPart.CFrame
-savedCam = workspace.CurrentCamera.CFrame
 if game.PlaceId == 6708206173 then
     game:GetService("ReplicatedStorage"):WaitForChild("RequestRespawn"):FireServer()
 end
