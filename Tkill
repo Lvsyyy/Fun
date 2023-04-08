@@ -10,23 +10,22 @@ playerPos = playerChar.HumanoidRootPart.CFrame
 while not (player and playerChar and playerHum and tool) do
     wait()
 end
-while not (target and target.Character and game:GetService("Workspace"):FindFirstChild(targetName) and target.Character:FindFirstChildOfClass("Humanoid") and target.Character:FindFirstChildOfClass("Humanoid").Health > 0) do
+while not (target and target.Character and game:GetService("Workspace"):FindFirstChild(targetName) and target.Character:FindFirstChildOfClass("Humanoid") and target.Character:FindFirstChildOfClass("Humanoid").Health == 0) do
     wait()
 end
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Lvsyyy/Fun/main/Rescale"))()
-playerChar.Animate.Disabled = true
-playerHum.Parent = nil
-playerHum.Parent = player.Character
-tool.Parent = player.Character
-savedPos = playerChar.HumanoidRootPart.CFrame
-savedCam = workspace.CurrentCamera.CFrame
-firetouchinterest(target.Character.HumanoidRootPart, tool.Handle, 0);
-playerChar.Humanoid.Health = 0
-if game.PlaceId == 6708206173 then
-    game:GetService("ReplicatedStorage"):WaitForChild("RequestRespawn"):FireServer()
-end
-if target then
-    return
+if target.Character:FindFirstChildOfClass("Humanoid") then
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Lvsyyy/Fun/main/Rescale"))()
+    playerChar.Animate.Disabled = true
+    playerHum.Parent = nil
+    playerHum.Parent = player.Character
+    tool.Parent = player.Character
+    savedPos = playerChar.HumanoidRootPart.CFrame
+    savedCam = workspace.CurrentCamera.CFrame
+    firetouchinterest(target.Character.HumanoidRootPart, tool.Handle, 0);
+    playerChar.Humanoid.Health = 0
+    if game.PlaceId == 6708206173 then
+        game:GetService("ReplicatedStorage"):WaitForChild("RequestRespawn"):FireServer()
+    end
 else
     game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame = playerPos
 end
