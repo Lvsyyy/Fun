@@ -10,10 +10,10 @@ playerPos = playerChar.HumanoidRootPart.CFrame
 while not (player and playerChar and playerHum and tool) do
     wait()
 end
-while not (target and target.Character and game:GetService("Workspace"):FindFirstChild(targetName) and target.Character:FindFirstChildOfClass("Humanoid") and target.Character:FindFirstChildOfClass("Humanoid").Health == 0) do
+while not (target and target.Character and game:GetService("Workspace"):FindFirstChild(targetName) and target.Character:FindFirstChild("Humanoid") and target.Character:FindFirstChild("Humanoid").Health == 0) do
     wait()
 end
-if target.Character:FindFirstChildOfClass("Humanoid") then
+if target.Character:FindFirstChild("Humanoid") then
     loadstring(game:HttpGet("https://raw.githubusercontent.com/Lvsyyy/Fun/main/Rescale"))()
     playerChar.Animate.Disabled = true
     playerHum.Parent = nil
