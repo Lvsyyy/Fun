@@ -10,7 +10,7 @@ playerPos = playerChar.HumanoidRootPart.CFrame
 while not (player and playerChar and playerHum and tool) do
     wait()
 end
-while not (target and target.Character and game:GetService("Workspace"):FindFirstChild(targetName) and target.Character:FindFirstChild("Humanoid") and target.Character:FindFirstChild("Humanoid").Health == 0) do
+while not (target and target.Character and game:GetService("Workspace"):FindFirstChild(targetName) and target.Character:FindFirstChild("Humanoid") and target.Character:FindFirstChild("Humanoid").Health > 0) do
     wait()
 end
 if target.Character:FindFirstChild("Humanoid") then
