@@ -7,8 +7,20 @@ local target = game:GetService("Players")[targetName]
 local tool = player.Backpack:FindFirstChildOfClass("Tool")
 playerPos = playerChar.HumanoidRootPart.CFrame
 
-while not player and not playerChar and not playerHum and not tool do
+local player = game:GetService("Players").LocalPlayer
+local playerChar = player.Character
+local playerHum = playerChar and playerChar:FindFirstChildOfClass("Humanoid")
+local target = game:GetService("Players")[targetName]
+local tool = player.Backpack:FindFirstChildOfClass("Tool")
+playerPos = playerChar and playerChar.HumanoidRootPart.CFrame
+
+while not (player and playerChar and playerHum and tool and target) do
     wait()
+    player = game:GetService("Players").LocalPlayer
+    playerChar = player.Character
+    playerHum = playerChar and playerChar:FindFirstChildOfClass("Humanoid")
+    target = game:GetService("Players")[targetName]
+    tool = player.Backpack:FindFirstChildOfClass("Tool")
 end
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Lvsyyy/Fun/main/Rescale"))()
 playerChar.Animate.Disabled = true
@@ -22,5 +34,8 @@ savedCam = workspace.CurrentCamera.CFrame
 if game.PlaceId == 6708206173 then
     game:GetService("ReplicatedStorage"):WaitForChild("RequestRespawn"):FireServer()
 end
-wait(0.5)
-game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame = playerPos
+if target then
+    return
+else
+    game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame = playerPos
+end
