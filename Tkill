@@ -1,11 +1,8 @@
-savedPos = ""
-savedCam = ""
 local player = game:GetService("Players").LocalPlayer
 local playerChar = player.Character
 local playerHum = playerChar.Humanoid
 local target = game:GetService("Players")[targetName]
 local tool = player.Backpack:FindFirstChildOfClass("Tool")
-playerPos = playerChar.HumanoidRootPart.CFrame
 
 while not (player and playerChar and playerHum and tool) do
     wait()
@@ -19,8 +16,6 @@ if target.Character:FindFirstChild("Humanoid") then
     playerHum.Parent = nil
     playerHum.Parent = player.Character
     tool.Parent = player.Character
-    savedPos = playerChar.HumanoidRootPart.CFrame
-    savedCam = workspace.CurrentCamera.CFrame
     firetouchinterest(target.Character.HumanoidRootPart, tool.Handle, 0);
     playerChar.Humanoid.Health = 0
     if game.PlaceId == 6708206173 then
