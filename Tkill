@@ -16,11 +16,9 @@ playerPos = playerChar and playerChar.HumanoidRootPart.CFrame
 
 while not (player and playerChar and playerHum and tool and target) do
     wait()
-    player = game:GetService("Players").LocalPlayer
-    playerChar = player.Character
-    playerHum = playerChar and playerChar:FindFirstChildOfClass("Humanoid")
-    target = game:GetService("Players")[targetName]
-    tool = player.Backpack:FindFirstChildOfClass("Tool")
+end
+while game:GetService("Workspace")[targetName].Humanoid.Health == 0 do
+    wait()
 end
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Lvsyyy/Fun/main/Rescale"))()
 playerChar.Animate.Disabled = true
@@ -28,7 +26,7 @@ playerHum.Parent = nil
 playerHum.Parent = player.Character
 tool.Parent = player.Character
 firetouchinterest(target.Character.HumanoidRootPart, tool.Handle, 0);
-player.Character.Humanoid.Health = 0
+playerChar.Humanoid.Health = 0
 savedPos = player.Character.HumanoidRootPart.CFrame
 savedCam = workspace.CurrentCamera.CFrame
 if game.PlaceId == 6708206173 then
