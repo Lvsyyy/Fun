@@ -7,20 +7,10 @@ local target = game:GetService("Players")[targetName]
 local tool = player.Backpack:FindFirstChildOfClass("Tool")
 playerPos = playerChar.HumanoidRootPart.CFrame
 
-local player = game:GetService("Players").LocalPlayer
-local playerChar = player.Character
-local playerHum = playerChar and playerChar:FindFirstChildOfClass("Humanoid")
-local target = game:GetService("Players")[targetName]
-local tool = player.Backpack:FindFirstChildOfClass("Tool")
-playerPos = playerChar and playerChar.HumanoidRootPart.CFrame
-
-while not (player and playerChar and playerHum and tool and target) do
+while not (player and playerChar and playerHum and tool) do
     wait()
 end
-while not game:GetService("Workspace")[targetName] do
-    wait()
-end
-while game:GetService("Workspace")[targetName].Humanoid.Health == 0 do
+while not (target and target.Character and game:GetService("Workspace"):FindFirstChild(targetName) and target.Character:FindFirstChildOfClass("Humanoid") and target.Character:FindFirstChildOfClass("Humanoid").Health > 0) do
     wait()
 end
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Lvsyyy/Fun/main/Rescale"))()
