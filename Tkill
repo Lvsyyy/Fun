@@ -1,4 +1,4 @@
-if game:GetService("Players")[targetName]:IsA("Player") then
+if game:GetService("Players")[targetName] then
     savedPos = ""
     savedCam = ""
     local player = game:GetService("Players").LocalPlayer
