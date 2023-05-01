@@ -2,7 +2,7 @@ local Players = game:GetService("Players")
 local player = Players.LocalPlayer
 local savedPos
 local savedCam
-local imageID = 11941153526
+local imageID = 13008319191
 local fakeText = "Ugh auh uh~"
 
 local function updateBoothText(text, imageID)
