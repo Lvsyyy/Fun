@@ -1,1 +1,6 @@
-game:GetService("Players").LocalPlayer.Character.Humanoid.Jump = true
+local f = game:GetService("ReplicatedStorage"):WaitForChild("DefaultChatSystemChatEvents"):WaitForChild("SayMessageRequest")
+
+_G.spam = true
+while _G.spam and wait(5) do
+    f:FireServer("WARNING! ⚠\n  This man is a known Kindergarten Predator.\nPlease stay away.", "All")
+end
