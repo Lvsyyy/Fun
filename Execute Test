@@ -1,17 +1,4 @@
 local player = game:GetService("Players").LocalPlayer
-local playerFound = false
-
-while not playerFound do
-    for _, ifplayer in pairs(game:GetService("Players"):GetPlayers()) do
-        if string.find(ifplayer.Name, player.Name) then
-            playerFound = true
-            break
-        end
-    end
-    if not playerFound then
-        wait(1)
-    end
-end
 
 while true do
     local function noCooldown()
